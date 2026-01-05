@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_person_dim_raw
+    description: "Lightly cleaned raw person dimension data"
+    columns:
+      - name: person_id
+        description: "Person identifier (not unique at this stage)"
+        tests:
+          - not_null
+
+  - name: stg_insurance_facts_raw
+    description: "Lightly cleaned insurance facts with safe type casting"
+    columns:
+      - name: person_id
+        description: "Person identifier"
+        tests:
+          - not_null
+      - name: year
+        description: "Calendar year for the facts"
+        tests:
+          - not_null
+      - name: insurance_cost_year
+        description: "Annual insurance cost (safely casted)"
+      - name: annual_doctor_visits
+        description: "Number of doctor visits (safely casted)"
+      - name: annual_cost_to_insurance
+        description: "Annual cost to insurance company (safely casted)"

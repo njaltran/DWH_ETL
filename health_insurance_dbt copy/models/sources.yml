@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    database: dw-health-insurance-bipm
+    schema: health_insurance_raw  # UPDATE THIS to your actual raw schema name
+    description: "Raw health insurance data ingested from CSV files"
+    tables:
+      - name: health_insurance_person_dim_raw
+        description: "Raw person dimension data"
+        
+      - name: health_insurance_insurance_facts_raw
+        description: "Raw insurance facts by person and year"

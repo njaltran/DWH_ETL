@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: mart_person_kpis
+    description: "Person-level KPIs aggregated across all years"
+    columns:
+      - name: person_id
+        description: "Person identifier"
+        tests:
+          - not_null
+          - unique
+      - name: years_with_data
+        description: "Number of years with data for this person"
+        tests:
+          - not_null
+
+  - name: mart_yearly_kpis
+    description: "System-wide yearly KPIs for executive reporting"
+    columns:
+      - name: year
+        description: "Calendar year"
+        tests:
+          - not_null
+          - unique
+      - name: total_persons
+        description: "Total unique persons with data in this year"
+        tests:
+          - not_null
+
+  - name: mart_city_year_kpis
+    description: "City-level yearly aggregations for geographic analysis"
+    columns:
+      - name: city
+        description: "City name"
+        tests:
+          - not_null
+      - name: year
+        description: "Calendar year"
+        tests:
+          - not_null
+      - name: persons_in_city
+        description: "Number of persons in this city-year"
+        tests:
+          - not_null

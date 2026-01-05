@@ -1,0 +1,16 @@
+
+
+  create or replace view `dw-health-insurance-bipm`.`health_insurance_dev`.`visits_reasonable`
+  OPTIONS()
+  as -- Test: Doctor visits should be between 0 and 365 per year
+-- This test fails if values are outside reasonable bounds
+
+SELECT
+  person_id,
+  year,
+  annual_doctor_visits
+FROM `dw-health-insurance-bipm`.`health_insurance_dev_core`.`fact_insurance_yearly`
+WHERE
+  annual_doctor_visits IS NOT NULL
+  AND (annual_doctor_visits < 0 OR annual_doctor_visits > 365);
+

@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: int_person_cleaned
+    description: "Cleaned person data with parsed dates, standardized categories, and address parsing"
+    columns:
+      - name: person_id
+        description: "Person identifier"
+        tests:
+          - not_null
+      - name: gender_std
+        description: "Standardized gender"
+        tests:
+          - accepted_values:
+              values: ['male', 'female', 'unknown']
+      - name: family_status_std
+        description: "Standardized family status"
+        tests:
+          - accepted_values:
+              values: ['single', 'married', 'divorced', 'widowed', 'unknown']
+      - name: insurance_status_std
+        description: "Standardized insurance status"
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive', 'pending', 'unknown']
+      - name: wealth_bracket_std
+        description: "Standardized wealth bracket"
+        tests:
+          - accepted_values:
+              values: ['low', 'medium', 'upper_middle', 'high', 'unknown']
+
+  - name: int_person_deduped
+    description: "Deduplicated person data using completeness scoring"
+    columns:
+      - name: person_id
+        description: "Person identifier (unique after deduplication)"
+        tests:
+          - not_null
+          - unique
+      - name: gender_std
+        description: "Standardized gender"
+        tests:
+          - accepted_values:
+              values: ['male', 'female', 'unknown']
+      - name: family_status_std
+        description: "Standardized family status"
+        tests:
+          - accepted_values:
+              values: ['single', 'married', 'divorced', 'widowed', 'unknown']
+      - name: insurance_status_std
+        description: "Standardized insurance status"
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive', 'pending', 'unknown']
+      - name: wealth_bracket_std
+        description: "Standardized wealth bracket"
+        tests:
+          - accepted_values:
+              values: ['low', 'medium', 'upper_middle', 'high', 'unknown']

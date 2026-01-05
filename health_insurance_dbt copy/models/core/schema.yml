@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: dim_person
+    description: "Conformed person dimension (SCD Type 1)"
+    columns:
+      - name: person_id
+        description: "Person identifier (primary key)"
+        tests:
+          - not_null
+          - unique
+      - name: gender
+        description: "Standardized gender"
+        tests:
+          - accepted_values:
+              values: ['male', 'female', 'unknown']
+      - name: family_status
+        description: "Standardized family status"
+        tests:
+          - accepted_values:
+              values: ['single', 'married', 'divorced', 'widowed', 'unknown']
+      - name: insurance_status
+        description: "Current insurance status"
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive', 'pending', 'unknown']
+      - name: wealth_bracket
+        description: "Wealth bracket classification"
+        tests:
+          - accepted_values:
+              values: ['low', 'medium', 'upper_middle', 'high', 'unknown']
+
+  - name: fact_insurance_yearly
+    description: "Insurance facts by person and year (incremental)"
+    columns:
+      - name: person_id
+        description: "Person identifier (foreign key)"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_person')
+              field: person_id
+      - name: year
+        description: "Calendar year"
+        tests:
+          - not_null
+      - name: insurance_cost_year
+        description: "Annual insurance cost paid by person"
+      - name: annual_doctor_visits
+        description: "Number of doctor visits in the year"
+      - name: annual_cost_to_insurance
+        description: "Annual cost incurred by insurance company"

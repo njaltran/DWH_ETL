@@ -1,0 +1,51 @@
+{
+    "path_count": 185,
+    "parsed_path_count": 185,
+    "static_analysis_path_count": 13,
+    "static_analysis_parsed_path_count": 11,
+    "is_partial_parse_enabled": true,
+    "is_static_analysis_enabled": true,
+    "read_files_elapsed": 0.042167999999946915,
+    "load_macros_elapsed": 0.31767733299784595,
+    "parse_project_elapsed": 0.3576744160018279,
+    "patch_sources_elapsed": 0.012306791999435518,
+    "process_manifest_elapsed": 0.020376250002300367,
+    "load_all_elapsed": 0.7969339589981246,
+    "projects": [
+        {
+            "project_name": "health_insurance_dbt",
+            "elapsed": 0.35434120800346136,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.15128745900437934,
+                    "parsed_path_count": 13
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.20117683300486533,
+                    "parsed_path_count": 5
+                }
+            ],
+            "parsed_path_count": 18
+        },
+        {
+            "project_name": "dbt_bigquery",
+            "elapsed": 0.0015779169989400543,
+            "parsers": [],
+            "parsed_path_count": 0
+        },
+        {
+            "project_name": "dbt",
+            "elapsed": 0.00167291599791497,
+            "parsers": [
+                {
+                    "parser": "doc",
+                    "elapsed": 0.0001359999951091595,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 1
+        }
+    ]
+}

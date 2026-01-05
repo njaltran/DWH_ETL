@@ -1,0 +1,23 @@
+health_insurance:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth  # or service-account
+      project: dw-health-insurance-bipm  # Your GCP project ID
+      dataset: health_insurance_dev      # Development dataset
+      threads: 4
+      timeout_seconds: 300
+      location: EU
+      priority: interactive
+      
+    prod:
+      type: bigquery
+      method: service-account
+      project: dw-health-insurance-bipm
+      dataset: health_insurance_prod
+      threads: 8
+      timeout_seconds: 300
+      location: EU
+      priority: interactive
+      keyfile: /path/to/service-account-key.json  # For production
